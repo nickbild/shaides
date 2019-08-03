@@ -6,7 +6,7 @@ import sys
 img_width = 300
 img_height = 300
 batch = "1"
-dir = "data/train/lamp1"
+dir = "data_objects/train/lamp1"
 
 
 def gstreamer_pipeline (capture_width=3280, capture_height=2464, display_width=img_width, display_height=img_height, framerate=21, flip_method=0) :
