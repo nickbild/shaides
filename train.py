@@ -9,7 +9,7 @@ from torch.autograd import Variable
 
 img_width = 300
 img_height = 300
-class_count = 11
+class_count = 3 # gestures = 2, objects = 3
 classifier_type = "objects" # "objects", "gestures"
 
 
@@ -102,7 +102,7 @@ class Net(nn.Module):
 
 
 def load_train_dataset(train_transformations):
-    data_path = 'data/train/'
+    data_path = "data_{}/train/".format(classifier_type)
 
     train_dataset = torchvision.datasets.ImageFolder(
         root=data_path,
@@ -120,7 +120,7 @@ def load_train_dataset(train_transformations):
 
 
 def load_test_dataset(test_transformations):
-    data_path = 'data/test/'
+    data_path = "data_{}/test/".format(classifier_type)
 
     test_dataset = torchvision.datasets.ImageFolder(
         root=data_path,
