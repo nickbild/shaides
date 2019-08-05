@@ -207,11 +207,11 @@ def train(num_epochs):
 def adjust_learning_rate(epoch):
     lr = 0.000001
 
-    if epoch > 180:
+    if epoch > 800:
         lr = lr / 1000
-    elif epoch > 150:
+    elif epoch > 700:
         lr = lr / 100
-    elif epoch > 120:
+    elif epoch > 600:
         lr = lr / 10
 
     for param_group in optimizer.param_groups:
@@ -248,4 +248,4 @@ if __name__ == "__main__":
     test_loader = load_test_dataset(test_transformations)
 
     print("Starting training.")
-    train(500)
+    train(5000)
