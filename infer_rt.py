@@ -15,19 +15,25 @@ import requests
 img_width = 300
 img_height = 300
 hue_bridge = "192.168.1.113:5000"
-trained_model_objects = "gestures_31_3251-3300_arch14.model"
-trained_model_gestures = "gestures_31_3251-3300_arch14.model"
-num_classes = 11
+trained_model_objects = "objects_223_9817-3576.model"
+trained_model_gestures = "gestures_422_5847-2803.model"
+num_classes_objects = 3
+num_classes_gestures = 2
+
+objs = []
+objs.append("Google")
+objs.append("Lamp")
+objs.append("Nothing")
 
 
 # Load the saved models.
 checkpoint_objects = torch.load(trained_model_objects)
-model_objects = Net(num_classes=num_classes)
+model_objects = Net(num_classes=num_classes_objects)
 model_objects.load_state_dict(checkpoint_objects)
 model_objects.eval()
 
 checkpoint_gestures = torch.load(trained_model_gestures)
-model_gestures = Net(num_classes=num_classes)
+model_gestures = Net(num_classes=num_classes_gestures)
 model_gestures.load_state_dict(checkpoint_gestures)
 model_gestures.eval()
 
@@ -80,7 +86,7 @@ if __name__ == "__main__":
             index_objects, score_objects = predict_image_class(img, "objects")
             index_gestures, score_gestures = predict_image_class(img, "gestures")
 
-            print("Object Class: ", index_objects)
+            print("Object Class: ", objs[index_objects])
             print("Object Score: ", score_objects)
             print("Gestures Class: ", index_gestures)
             print("Gestures Score: ", score_gestures)
