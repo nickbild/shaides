@@ -25,6 +25,10 @@ objs.append("Google")
 objs.append("Lamp")
 objs.append("Nothing")
 
+gestures = []
+gestures.append("Wave")
+gestures.append("Nothing")
+
 
 # Load the saved models.
 checkpoint_objects = torch.load(trained_model_objects)
@@ -88,13 +92,13 @@ if __name__ == "__main__":
 
             print("Object Class: ", objs[index_objects])
             print("Object Score: ", score_objects)
-            print("Gestures Class: ", index_gestures)
+            print("Gestures Class: ", gestures[index_gestures])
             print("Gestures Score: ", score_gestures)
 
-            # if index == 0 and lastIndex == 0 and score > 10:
-            #     #print("Backwards")
-            #     requests.get("http://{}/backward".format(doom_host))
-
+            # TODO: Filter for scores.
+            if objs[index_objects] == "Lamp" and gestures[index_gestures] == "Wave":
+                print "TOGGLE LAMP"
+                # requests.get("http://{}/backward".format(doom_host))
 
         cap.release()
     else:
