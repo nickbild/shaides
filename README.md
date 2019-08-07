@@ -1,4 +1,6 @@
-![ShAIdes](https://raw.githubusercontent.com/nickbild/shaides/master/img/logo.jpg)
+<p align="center">
+<img src="https://raw.githubusercontent.com/nickbild/shaides/master/img/logo.jpg">
+</p>
 
 # ShAIdes
 
