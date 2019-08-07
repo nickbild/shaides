@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
             # TODO: Filter for scores.
             if objs[index_objects] == "Lamp" and gestures[index_gestures] == "Wave":
-                print "TOGGLE LAMP"
+                print("TOGGLE LAMP")
                 # requests.get("http://{}/backward".format(doom_host))
 
         cap.release()
