@@ -10,11 +10,18 @@ from train import Net
 import cv2
 from time import sleep
 import requests
+import json
 
 
 img_width = 300
 img_height = 300
+
 hue_bridge = "192.168.1.113:5000"
+hue_user = ""
+light_id = 1
+
+music_host = "192.168.1.113:5000"
+
 trained_model_objects = "objects_223_9817-3576.model"
 trained_model_gestures = "gestures_548_9937-3791.model"
 num_classes_objects = 3
@@ -81,6 +88,18 @@ def gstreamer_pipeline (capture_width=3280, capture_height=2464, display_width=i
     'video/x-raw, format=(string)BGR ! appsink'  % (capture_width,capture_height,framerate,flip_method,display_width,display_height))
 
 
+def toggle_lamp():
+    print("TOGGLE LAMP")
+    # json = json.dumps({'on': True})
+	# req = requests.put('http://' + hue_bridge + '/api/' + hue_user + '/lights/' + light_id + '/state', data=json)
+    # print(req.text)
+
+
+def toggle_music():
+    print("TOGGLE MUSIC")
+    # requests.get("http://{}/toggle_play".format(music_host))
+
+
 if __name__ == "__main__":
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
 
@@ -97,8 +116,9 @@ if __name__ == "__main__":
 
             # TODO: Filter for scores.
             if objs[index_objects] == "Lamp" and gestures[index_gestures] == "Wave":
-                print("TOGGLE LAMP")
-                # requests.get("http://{}/backward".format(doom_host))
+                toggle_lamp()
+            elif objs[index_objects] == "Google" and gestures[index_gestures] == "Wave":
+                toogle_music()
 
         cap.release()
     else:
