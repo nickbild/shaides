@@ -16,7 +16,7 @@ img_width = 300
 img_height = 300
 hue_bridge = "192.168.1.113:5000"
 trained_model_objects = "objects_223_9817-3576.model"
-trained_model_gestures = "gestures_422_5847-2803.model"
+trained_model_gestures = "gestures_548_9937-3791.model"
 num_classes_objects = 3
 num_classes_gestures = 2
 
