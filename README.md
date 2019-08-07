@@ -1,3 +1,5 @@
+![ShAIdes](https://raw.githubusercontent.com/nickbild/shaides/master/img/logo.jpg)
+
 # ShAIdes
 
 My AI is so bright, I have to wear shades.
