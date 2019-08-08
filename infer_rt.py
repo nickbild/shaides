@@ -23,7 +23,7 @@ light_id = 1
 music_host = "192.168.1.113:5000"
 
 trained_model_objects = "objects_223_9817-3576.model"
-trained_model_gestures = "gestures_548_9937-3791.model"
+trained_model_gestures = "gestures_173_12311-6836.model"
 num_classes_objects = 3
 num_classes_gestures = 2
 
@@ -118,7 +118,7 @@ if __name__ == "__main__":
             if objs[index_objects] == "Lamp" and gestures[index_gestures] == "Wave":
                 toggle_lamp()
             elif objs[index_objects] == "Google" and gestures[index_gestures] == "Wave":
-                toogle_music()
+                toggle_music()
 
         cap.release()
     else:
