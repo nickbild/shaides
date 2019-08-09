@@ -61,6 +61,8 @@ Images are captured and processed at a rate of ~10 frames per second.  The proce
 
 As mentioned in the [AWS instructions section](https://github.com/nickbild/shaides#aws), you can train on your own images to add additional objects and gestures.  Next, modify [infer_rt.py](https://github.com/nickbild/shaides/blob/master/infer_rt.py) to specify the actions to take when each object/gesture combination is detected.
 
+Beyond home automation, many additional applications of this technology can be envisioned.  For example, in a healthcare setting, it could be adapted to allow medical professionals to place orders, request assistance, and add documentation to an Electronic Health Record.
+
 ## Bill of Materials
 
 All materials can be purchased for ~$150.
