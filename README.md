@@ -57,6 +57,12 @@ The system needs to respond in real-time to user interactions with the environme
 
 Images are captured and processed at a rate of ~10 frames per second.  The processing is fast enough that I had the luxury of applying some 'smoothing' techniques to improve the user experience.  The algorithm remembers the last 5 objects and gestures detected, and if an object/gesture combination is detected anywhere within this look-back, the action is fired.  This avoids potentially frustrating edge cases in which the user's gesture covers the object in frame, preventing proper detection.  Given the relatively high frame rate, it is imperceptible to the user if it takes 2-3 frames to capture their intent.  And since the look-back only spans ~0.5 seconds of wall time, off target actions are nearly impossible.
 
+### Action Mechanisms
+
+Toggling the lamp is straightforward.  I have Philips Hue light bulbs, and Philips provides a simple REST API for interacting with them.  When the action is triggered, I simply send a request to the appropriate endpoint.
+
+Google Home devices are not so easy to work with; there is no API.  To get around this took a bit of a kludge.  I have Spotify running on a laptop, casting to the Google Home.  That same laptop also runs a [custom REST API](https://github.com/nickbild/shaides/blob/master/api.py) that I developed.  The API can control Spotify by simulating keypresses on the host machine.  So, from the Jetson, I can hit API endpoints on the laptop to control Spotify, and therefore control what is happening on the Google Home.
+
 ## Extension and Future Direction
 
 As mentioned in the [AWS instructions section](https://github.com/nickbild/shaides#aws), you can train on your own images to add additional objects and gestures.  Next, modify [infer_rt.py](https://github.com/nickbild/shaides/blob/master/infer_rt.py) to specify the actions to take when each object/gesture combination is detected.
