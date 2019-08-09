@@ -6,7 +6,7 @@
 
 My AI is so bright, I gotta wear shades.
 
-Effect change in your surroundings by wearing these AI-enabled glasses.
+Effect change in your surroundings by wearing these AI-enabled glasses.  ShAIdes is a transparent UI for the real world.
 
 Coming soon!
 
@@ -14,7 +14,7 @@ Coming soon!
 
 A small CSI camera is attached to the frames of a pair of glasses, capturing what the wearer is seeing.  The camera feeds real-time images to an NVIDIA Jetson Nano.  The Jetson runs two separate image classification Convolutional Neural Network (CNN) models on each image, one to detect objects, and another to detect gestures made by the wearer.
 
-When the combination of a known object and gesture is detected, an action will be fired that manipulates the wearer's environment.  For example, the wearer may look at a lamp and motion for it to turn on.  The lamp turns on.  Or, the wearer may look at a smart speaker, and motion for it to play music.  It immediately begins playing music.  ShAIdes is a transparent UI for the real world.
+When the combination of a known object and gesture is detected, an action will be fired that manipulates the wearer's environment.  For example, the wearer may look at a lamp and motion for it to turn on.  The lamp turns on.  Or, the wearer may look at a smart speaker, and motion for it to play music.  It immediately begins playing music.
 
 ## Training
 
