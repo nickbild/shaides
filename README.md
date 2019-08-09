@@ -14,7 +14,7 @@ Coming soon!
 
 A small CSI camera is attached to the frames of a pair of glasses, capturing what the wearer is seeing.  The camera feeds real-time images to an NVIDIA Jetson Nano.  The Jetson runs two separate image classification Convolutional Neural Network (CNN) models on each image, one to detect objects, and another to detect gestures made by the wearer.
 
-When the combination of a known object and gesture is detected, an action will be fired that manipulates the wearer's environment.  For example, the wearer may look at a lamp and motion for it to turn on.  The lamp turns on.  Or, the wearer may look at a smart speaker, and motion for it to play music.  It immediately begins playing music.  ShAIdes makes the World your UI.
+When the combination of a known object and gesture is detected, an action will be fired that manipulates the wearer's environment.  For example, the wearer may look at a lamp and motion for it to turn on.  The lamp turns on.  Or, the wearer may look at a smart speaker, and motion for it to play music.  It immediately begins playing music.  ShAIdes is a transparent UI for the real world.
 
 ## Training
 
@@ -56,3 +56,21 @@ To capture so much training data, I developed an [automated data collection pipe
 The system needs to respond in real-time to user interactions with the environment for a pleasant user experience.  I needed something that would provide massively parallel processing to deal with real-time image processing and inference against two models.  I also needed something small, with relatively low power consumption requirements, and low cost.  In this case, the Jetson Nano turned out to be a great platform for meeting all of these requirements.
 
 Images are captured and processed at a rate of ~10 frames per second.  The processing is fast enough that I had the luxury of applying some 'smoothing' techniques to improve the user experience.  The algorithm remembers the last 5 objects and gestures detected, and if an object/gesture combination is detected anywhere within this look-back, the action is fired.  This avoids potentially frustrating edge cases in which the user's gesture covers the object in frame, preventing proper detection.  Given the relatively high frame rate, it is imperceptible to the user if it takes 2-3 frames to capture their intent.  And since the look-back only spans ~0.5 seconds of wall time, off target actions are nearly impossible.
+
+## Extension and Future Direction
+
+As mentioned in the [AWS instructions section](https://github.com/nickbild/shaides#aws), you can train on your own images to add additional objects and gestures.  Next, modify [infer_rt.py](https://github.com/nickbild/shaides/blob/master/infer_rt.py) to specify the actions to take when each object/gesture combination is detected.
+
+## Bill of Materials
+
+All materials can be purchased for ~$150.
+
+- NVIDIA Jetson Nano
+- Battery Pack (such as INIU 10000 mAh Portable Power Bank)
+- Raspberry Pi Camera Module v2 (or similar CSI camera)
+- CSI cable, ~2'
+- Glasses
+
+## About the Author
+
+[Nick A. Bild, MS](https://nickbild79.firebaseapp.com/#!/)
