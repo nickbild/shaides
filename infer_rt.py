@@ -16,9 +16,9 @@ import json
 img_width = 300
 img_height = 300
 
-hue_bridge = "192.168.1.113:5000"
-hue_user = ""
-light_id = 1
+hue_bridge = "192.168.1.169"
+hue_user = "XXX"
+light_id = "2"
 
 music_host = "192.168.1.113:5000"
 
@@ -90,9 +90,9 @@ def gstreamer_pipeline (capture_width=3280, capture_height=2464, display_width=i
 
 def toggle_lamp():
     print("TOGGLE LAMP")
-    # json = json.dumps({'on': True})
-	# req = requests.put('http://' + hue_bridge + '/api/' + hue_user + '/lights/' + light_id + '/state', data=json)
-    # print(req.text)
+    json_data = json.dumps({'on': True})
+    req = requests.put('http://' + hue_bridge + '/api/' + hue_user + '/lights/' + light_id + '/state', data=json_data)
+    print(req.text)
 
 
 def toggle_music():
