@@ -97,7 +97,7 @@ def toggle_lamp():
 
 def toggle_music():
     print("TOGGLE MUSIC")
-    # requests.get("http://{}/toggle_play".format(music_host))
+    requests.get("http://{}/toggle_play".format(music_host))
 
 
 if __name__ == "__main__":
