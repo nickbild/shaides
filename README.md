@@ -49,7 +49,7 @@ To train for your own purposes, just place your own images in the `data_objects`
 
 ### Data Collection
 
-To capture so much training data, I developed an (automated data collection pipeline)[https://github.com/nickbild/shaides/blob/master/capture_images.py].
+To capture so much training data, I developed an [automated data collection pipeline](https://github.com/nickbild/shaides/blob/master/capture_images.py).
 
 ## Real-time Inference
 
