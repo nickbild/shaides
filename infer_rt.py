@@ -94,7 +94,20 @@ def gstreamer_pipeline (capture_width=3280, capture_height=2464, display_width=i
 
 def toggle_lamp():
     print("TOGGLE LAMP")
-    json_data = json.dumps({'on': True})
+
+    # Check to see if light is already on.
+    light_state = "off"
+    req = requests.get('http://' + hue_bridge + '/api/' + hue_user + '/lights')
+	json_data = req.json()
+    if json_data[light_id]["state"]["on"]:
+        light_state = "on"
+
+    # Prepare and send request to toggle light.
+    if light_state == "off":
+        json_data = json.dumps({'on': True})
+    else:
+        json_data = json.dumps({'on': False})
+
     req = requests.put('http://' + hue_bridge + '/api/' + hue_user + '/lights/' + light_id + '/state', data=json_data)
     print(req.text)
 
