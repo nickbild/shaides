@@ -16,7 +16,7 @@ When the combination of a known object and gesture is detected, an action will b
 
 ## Training
 
-[A CNN was built](https://github.com/nickbild/shaides/blob/master/train.py) using PyTorch and trained on two different data sets to generate independent models for object and gesture detection.  The object detection model was trained on over 13,700 images, and the gesture detection model on 19,500 images.  Each object/gesture was trained from many angles, many distances, and under many lighting conditions to allow the model to find the key features that need to be recognized, while ignoring noise.
+[A CNN was built](https://github.com/nickbild/shaides/blob/master/train.py) using PyTorch and trained on two different data sets to generate independent models for object and gesture detection.  The object detection model was trained on over 13,700 images, and the gesture detection model on 19,500 images.  Each object/gesture was captured from many angles, many distances, and under many lighting conditions to allow the model to find the key features that need to be recognized, while ignoring noise.
 
 As an example, here is a lamp that was trained for in the objects model:
 
