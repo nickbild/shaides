@@ -47,6 +47,10 @@ This will generate `*.model` output files from each epoch that you can download,
 
 To train for your own purposes, just place your own images in the `data_objects` and `data_gestures` folders under `train` and `test`.  You can make your own folders there if you want to add new objects or gestures.
 
+### Data Collection
+
+To capture so much training data, I developed an (automated data collection pipeline)[https://github.com/nickbild/shaides/blob/master/capture_images.py].
+
 ## Real-time Inference
 
 The system needs to respond in real-time to user interactions with the environment for a pleasant user experience.  I needed something that would provide massively parallel processing to deal with real-time image processing and inference against two models.  I also needed something small, with relatively low power consumption requirements, and low cost.  The Jetson Nano turned out to be a great platform for meeting all
