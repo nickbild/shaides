@@ -5,22 +5,26 @@ from torch.autograd import Variable
 from torchvision.models import squeezenet1_1
 from io import open
 import os
+import sys
 from PIL import Image
 from train import Net
 import cv2
 from time import sleep
 import requests
 import json
+import ConfigParser
 
+
+config = ConfigParser.ConfigParser()
+config.read(os.path.abspath(os.path.dirname(sys.argv[0])) + '/params.cfg')
+
+hue_user = config.get('general', 'hue_user')
+hue_bridge = config.get('general', 'hue_bridge')
+light_id = config.get('general', 'light_id')
+music_host = config.get('general', 'music_host')
 
 img_width = 300
 img_height = 300
-
-hue_bridge = "192.168.1.169"
-hue_user = "XXX"
-light_id = "2"
-
-music_host = "192.168.1.113:5000"
 
 trained_model_objects = "objects_223_9817-3576.model"
 trained_model_gestures = "gestures_173_12311-6836.model"
@@ -100,29 +104,63 @@ def toggle_music():
     requests.get("http://{}/toggle_play".format(music_host))
 
 
-if __name__ == "__main__":
+def reset_lookback():
+    return [-1, -1, -1, -1, -1]
+
+
+def push_lookback(recent, index):
+    recent[1:] = recent[0:4]
+    recent[0] = index
+    return recent
+
+
+def lookback_contains(recent, value):
+    for i in range(len(recent)):
+        if recent[i] == value:
+            return True
+    return False
+
+
+def main():
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
+
+    # Remember recently detected objects and gestures.
+    recent_objects = reset_lookback()
+    recent_gestures = reset_lookback()
 
     if cap.isOpened():
         while True:
             ret_val, img_in = cap.read()
             cv2.imwrite("out.jpg", img_in)
             img = Image.open('out.jpg')
-            
+
             index_objects, score_objects = predict_image_class(img, "objects")
             index_gestures, score_gestures = predict_image_class(img, "gestures")
 
-            print("Object Class: ", objs[index_objects])
-            print("Object Score: ", score_objects)
-            print("Gestures Class: ", gestures[index_gestures])
-            print("Gestures Score: ", score_gestures)
+            # print("Object Class: ", objs[index_objects])
+            # print("Object Score: ", score_objects)
+            # print("Gestures Class: ", gestures[index_gestures])
+            # print("Gestures Score: ", score_gestures)
 
-            # TODO: Filter for scores.
-            if objs[index_objects] == "Lamp" and gestures[index_gestures] == "Wave":
+            recent_objects = push_lookback(recent_objects, index_objects)
+            recent_gestures = push_lookback(recent_gestures, index_gestures)
+
+            # Lamp, Wave
+            if lookback_contains(recent_objects, 1) and lookback_contains(recent_gestures, 0):
+                recent_objects = reset_lookback()
+                recent_gestures = reset_lookback()
                 toggle_lamp()
-            elif objs[index_objects] == "Google" and gestures[index_gestures] == "Wave":
+
+            # Google, Wave
+            elif lookback_contains(recent_objects, 0) and lookback_contains(recent_gestures, 0):
+                recent_objects = reset_lookback()
+                recent_gestures = reset_lookback()
                 toggle_music()
 
         cap.release()
     else:
         print('Unable to open camera.')
+
+
+if __name__ == "__main__":
+    main()
