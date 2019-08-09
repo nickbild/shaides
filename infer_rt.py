@@ -12,10 +12,10 @@ import cv2
 from time import sleep
 import requests
 import json
-import ConfigParser
+import configparser
 
 
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 config.read(os.path.abspath(os.path.dirname(sys.argv[0])) + '/params.cfg')
 
 hue_user = config.get('general', 'hue_user')
@@ -98,7 +98,8 @@ def toggle_lamp():
     # Check to see if light is already on.
     light_state = "off"
     req = requests.get('http://' + hue_bridge + '/api/' + hue_user + '/lights')
-	json_data = req.json()
+    json_data = req.json()
+    
     if json_data[light_id]["state"]["on"]:
         light_state = "on"
 
@@ -118,11 +119,11 @@ def toggle_music():
 
 
 def reset_lookback():
-    return [-1, -1, -1, -1, -1]
+    return [-1, -1, -1]
 
 
 def push_lookback(recent, index):
-    recent[1:] = recent[0:4]
+    recent[1:] = recent[0:2]
     recent[0] = index
     return recent
 
@@ -150,9 +151,9 @@ def main():
             index_objects, score_objects = predict_image_class(img, "objects")
             index_gestures, score_gestures = predict_image_class(img, "gestures")
 
-            # print("Object Class: ", objs[index_objects])
+            # print("Object Class: ", objs[index_objects], index_objects)
             # print("Object Score: ", score_objects)
-            # print("Gestures Class: ", gestures[index_gestures])
+            # print("Gestures Class: ", gestures[index_gestures], index_gestures)
             # print("Gestures Score: ", score_gestures)
 
             recent_objects = push_lookback(recent_objects, index_objects)
