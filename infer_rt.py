@@ -105,7 +105,10 @@ if __name__ == "__main__":
 
     if cap.isOpened():
         while True:
-            ret_val, img = cap.read()
+            ret_val, img_in = cap.read()
+            cv2.imwrite("out.jpg", img_in)
+            img = Image.open('out.jpg')
+            
             index_objects, score_objects = predict_image_class(img, "objects")
             index_gestures, score_gestures = predict_image_class(img, "gestures")
 
