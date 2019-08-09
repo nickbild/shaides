@@ -5,8 +5,8 @@ import sys
 
 img_width = 300
 img_height = 300
-batch = "1"
-dir = "data_objects/train/lamp1"
+batch = "74"
+dir = "data_gestures/test/misc"
 
 
 def gstreamer_pipeline (capture_width=3280, capture_height=2464, display_width=img_width, display_height=img_height, framerate=21, flip_method=0) :
@@ -36,6 +36,8 @@ def save_frame_sequence(num_images, delay_sec, cap):
 
 if __name__ == '__main__':
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
-    sleep(5)
+    sleep(10)
     print("Go!")
-    save_frame_sequence(10, 0.2, cap)
+    save_frame_sequence(500, 0.2, cap)
+    print("*** DONE ***")
+    
