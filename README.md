@@ -16,7 +16,16 @@ When the combination of a known object and gesture is detected, an action will b
 
 ## Training
 
-[A CNN was built](https://github.com/nickbild/shaides/blob/master/train.py) using PyTorch and trained on two different data sets to generate independent models for object and gesture detection.  The object detection model was trained on over 13,700 images, and the gesture detection model on 19,500 images.
+[A CNN was built](https://github.com/nickbild/shaides/blob/master/train.py) using PyTorch and trained on two different data sets to generate independent models for object and gesture detection.  The object detection model was trained on over 13,700 images, and the gesture detection model on 19,500 images.  Each object/gesture was trained from many angles, many distances, and many lighting levels to allow the model to find the key features that need to be recognized.
+
+As an example, here is a lamp that was trained for in the objects model:
+!(Lamp)[https://raw.githubusercontent.com/nickbild/shaides/master/data_objects/train/lamp1/img_1_25.jpg)
+
+And a wave that was trained for in the gestures model:
+!(Wave)[https://raw.githubusercontent.com/nickbild/shaides/master/data_gestures/train/arm/img_26_46.jpg)
+
+Running inference on the following image against both models will result in high scores for both the lamp and a wave:
+!(LampAndWave)[https://raw.githubusercontent.com/nickbild/shaides/master/data_gestures/test/arm/img_59_328.jpg)
 
 ### AWS
 
