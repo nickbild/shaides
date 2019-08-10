@@ -85,13 +85,13 @@ See it in action:
 [YouTube](https://youtu.be/7UYi-exvHr0)
 
 A look at the glasses.  Yeah, that's a lot of cardboard and hot glue.  Stylish!
-[Glasses](https://raw.githubusercontent.com/nickbild/shaides/master/img/glasses_sm.jpg)
+![Glasses](https://raw.githubusercontent.com/nickbild/shaides/master/img/glasses_sm.jpg)
 
 The full setup.  The Jetson and battery pack are in a box, with cord threaded through the sides to hang around my neck.  Again, very stylish!
-[Full Setup](https://raw.githubusercontent.com/nickbild/shaides/master/img/full_setup_sm.jpg)
+![Full Setup](https://raw.githubusercontent.com/nickbild/shaides/master/img/full_setup_sm.jpg)
 
 A closer look at the equipment.
-[Inside Box](https://raw.githubusercontent.com/nickbild/shaides/master/img/box_sm.jpg)
+![Inside Box](https://raw.githubusercontent.com/nickbild/shaides/master/img/box_sm.jpg)
 
 ## Bill of Materials
 
