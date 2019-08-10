@@ -93,6 +93,9 @@ The full setup.  The Jetson and battery pack are in a box, with cord threaded th
 A closer look at the equipment.
 ![Inside Box](https://raw.githubusercontent.com/nickbild/shaides/master/img/box_sm.jpg)
 
+Powering the Jetson directly through the 5V rail.  I've never had any luck powering it via USB.
+![Inside Box](https://raw.githubusercontent.com/nickbild/shaides/master/img/power_sm.jpg)
+
 ## Bill of Materials
 
 All materials can be purchased for ~$150.
