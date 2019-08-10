@@ -65,7 +65,7 @@ To capture so much training data, I developed an [automated data collection pipe
 
 The system needs to respond in real-time to user interactions with the environment for a pleasant user experience.  I needed something that would provide massively parallel processing to deal with real-time image processing and inference against two models.  I also needed something small, with relatively low power consumption requirements, and low cost.  In this case, the Jetson Nano turned out to be a great platform for meeting all of these requirements.
 
-Images are captured and processed at a rate of ~10 frames per second.  The processing is fast enough that I had the luxury of applying some 'smoothing' techniques to improve the user experience.  The algorithm remembers the last 3 objects and gestures detected, and if an object/gesture combination is detected anywhere within this look-back, the action is fired.  This avoids potentially frustrating edge cases in which the user's gesture covers the object in frame, preventing proper detection.  Given the relatively high frame rate, it is imperceptible to the user if it takes 2-3 frames to capture their intent.  And since the look-back only spans ~0.3 seconds of wall time, off target actions are nearly impossible.
+Images are captured and processed at a rate of ~5 frames per second.  The processing is just fast enough that I had the luxury of applying some 'smoothing' techniques to improve the user experience.  The algorithm remembers the last 3 objects and gestures detected, and if an object/gesture combination is detected anywhere within this look-back, the action is fired.  This avoids potentially frustrating edge cases in which the user's gesture covers the object in frame, preventing proper detection.  Given the reasonably high frame rate, it is imperceptible to the user if it takes 2-3 frames to capture their intent.  And since the look-back only spans ~0.6 seconds of wall time, off target actions are nearly impossible.
 
 ### Action Mechanisms
 
@@ -79,6 +79,11 @@ As mentioned in the [AWS instructions section](https://github.com/nickbild/shaid
 
 Beyond home automation, many additional applications of this technology can be envisioned.  For example, in a healthcare setting, it could be adapted to allow medical professionals to place orders, request assistance, and add documentation to an Electronic Health Record.
 
+## Media
+
+See it in action:
+[YouTube](https://youtu.be/7UYi-exvHr0)
+
 ## Bill of Materials
 
 All materials can be purchased for ~$150.
@@ -87,6 +92,7 @@ All materials can be purchased for ~$150.
 - Battery Pack (such as INIU 10000 mAh Portable Power Bank)
 - Raspberry Pi Camera Module v2 (or similar CSI camera)
 - CSI cable, ~2'
+- USB WiFi adapter
 - Glasses
 
 ## About the Author
