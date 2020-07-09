@@ -8,6 +8,8 @@ My AI is so bright, I gotta wear shades.
 
 Effect change in your surroundings by wearing these AI-enabled glasses.  ShAIdes is a transparent UI for the real world.
 
+UPDATE 2020-07-09: I've made a far more compact and practical version of the device.  See [ShAIdes 2.0](https://github.com/nickbild/shaides_v2).
+
 ## How It Works
 
 A small CSI camera is attached to the frames of a pair of glasses, capturing what the wearer is seeing.  The camera feeds real-time images to an NVIDIA Jetson Nano.  The Jetson runs two separate image classification Convolutional Neural Network (CNN) models on each image, one to detect objects, and another to detect gestures made by the wearer.
